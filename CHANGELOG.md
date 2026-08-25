@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - **评测流水线**：`evaluate/pipeline.py` 同时输出 RAGAS 与 Agent 特有指标，生成 Markdown 报告 + CSV。
 - **前端可视化**：`static/` 重写 Agent 轨迹 + 工具清单 + 引用片段三栏布局。
 - **业务场景切换**：从黑马 IT 教育领域改为跨境电商合规（CE/FCC/RoHS/UN38.3/PSE/KCC），`config.ini` 与 `compliance/__init__.py` 集中管理。
-- **GitHub 提交准备**：`README.md`（架构图 + 简历映射表 + 快速开始）、`LICENSE`（MIT）、`.gitignore`、CI 工作流 `.github/workflows/ci.yml`。
+- **GitHub 提交准备**：`README.md`（架构图 + 模块对照表 + 快速开始）、`LICENSE`（MIT）、`.gitignore`、CI 工作流 `.github/workflows/ci.yml`。
 
 ### Changed
 - `base/config.py` 默认 `VALID_SOURCES` 从 IT 学科切换为合规业务分类。

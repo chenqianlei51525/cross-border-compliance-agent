@@ -23,16 +23,17 @@
 - 法规经常翻新，避免"凭印象答 / 凭旧文本答"。
 - 审计/平台合规：每条回答都能追溯到底层法规 chunk 或图谱三元组。
 
-简历话术对应实现：
+核心模块 → 代码对应（**点击直达**）：
 
-| 简历描述 | 代码位置 |
+
+| ⚙️ 模块 / 功能 | 🔗 代码实现（点链接直接跳） |
 | --- | --- |
-| 知识图谱驱动的跨文档法规推理 | `kg/` (Neo4j client + 抽取 + 多跳) |
-| Parent-Child 分块 + 混合召回 | `rag_qa/core/` (BGE-M3 + BM25 + RRF) |
-| Reflective RAG 反思检索 | `rag_qa/core/reflective.py` (Self-RAG + Corrective RAG) |
-| Query 增强与精排 | `agent/tools.py` (query_rewrite / sub_question / hyde / rerank) |
-| 两级问答链路 + RAGAS 评测 | MySQL+Redis 缓存 + `evaluate/pipeline.py` (RAGAS + Agent metrics) |
-| **RAG 作为 Agent 组件** | `agent/agent.py` (ReAct + Plan-and-Execute) |
+| 知识图谱驱动的跨文档法规推理 | [`kg/__init__.py`](kg/__init__.py) — `Neo4jKGClient` · `extract_triples_with_llm()` · `multi_hop_reasoning()` |
+| Parent-Child 分块 + 混合召回 | [`rag_qa/core/vector_store.py`](rag_qa/core/vector_store.py) (BGE-M3 + RRF) · [`mysql_qa/retrieval/bm25_search.py`](mysql_qa/retrieval/bm25_search.py) |
+| Reflective RAG 反思检索 | [`rag_qa/core/reflective.py`](rag_qa/core/reflective.py) — `ReflectiveRetriever.retrieve()` · `_judge_one()` · `_corrective_rewrite()` |
+| Query 增强与精排 | [`agent/tools.py`](agent/tools.py) — `hybrid_search` · `query_rewrite` · `sub_question_decompose` · `hyde_search` |
+| 两级问答链路 + RAGAS 评测 | [`mysql_qa/`](mysql_qa/) (MySQL+Redis 缓存) · [`evaluate/pipeline.py`](evaluate/pipeline.py) — `ragas_evaluate()` · `compute_agent_metrics()` |
+| 🧠 **RAG 作为 Agent 组件** | [`agent/agent.py`](agent/agent.py) — `ComplianceAgent.stream()` (ReAct) · `ComplianceAgent._is_complex()` (Plan-and-Execute) |
 
 ---
 
