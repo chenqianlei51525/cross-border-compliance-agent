@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>应小合规 · 跨境电商合规智能问答</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">应小合规</span>
+    <span class="tagline">跨境电商合规智能问答 · Agentic RAG</span>
+  </div>
+  <div class="badges">
+    <span class="badge">CE / FCC / RoHS / UN38.3 / PSE / KCC</span>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="chat">
+    <div class="messages" id="messages">
+      <div class="msg assistant">
+        <div class="bubble">
+          你好！我是「应小合规」，跨境卖家合规助手。
+          你可以问我：<br/>
+          - 蓝牙耳机出口德国需要哪些认证？<br/>
+          - 锂电池出口美国走空运要什么文件？<br/>
+          - RoHS 3.0 多限制了哪 4 种物质？<br/>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-row">
+      <select id="source-filter">
+        <option value="">不限法规类型</option>
+        <option value="ce-red">CE-RED</option>
+        <option value="fcc">FCC Part 15</option>
+        <option value="rohs">RoHS</option>
+        <option value="un38.3">UN38.3</option>
+        <option value="pse">PSE / 技适</option>
+        <option value="kcc">KCC</option>
+      </select>
+      <input id="user-input" type="text" placeholder="输入合规问题，按 Enter 发送" autofocus />
+      <button id="send-btn">发送</button>
+      <button id="stream-btn">▶ Agent 轨迹</button>
+    </div>
+  </section>
+
+  <aside class="side">
+    <div class="panel">
+      <h3>🔧 Agent 工具箱</h3>
+      <ul id="tool-list" class="tools"></ul>
+    </div>
+    <div class="panel">
+      <h3>🧭 当前推理轨迹</h3>
+      <div id="trace" class="trace">点击 "▶ Agent 轨迹" 看完整 Thought / Action 链。</div>
+    </div>
+    <div class="panel">
+      <h3>📚 引用片段</h3>
+      <div id="citations" class="citations"></div>
+    </div>
+  </aside>
+</main>
+
+<footer class="foot">
+  Powered by FastAPI · BGE-M3 · Milvus · Neo4j · Qwen ·
+  <a href="https://github.com/" target="_blank">GitHub</a>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
